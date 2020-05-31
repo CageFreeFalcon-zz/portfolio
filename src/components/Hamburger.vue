@@ -24,6 +24,7 @@
         justify-content: space-between;
         cursor: pointer;
         transition: transform 330ms ease-out;
+        position: relative;
     }
 
     .wrapper-menu.open {

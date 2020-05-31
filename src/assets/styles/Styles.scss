@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Ultra&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Molle:ital@1&family=Yellowtail&display=swap');
+//font-family: 'Molle', cursive;          menu
+//font-family: 'Yellowtail', cursive;     loading
+
+@import "~bootstrap";
+@import "~animate.css";
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Molle', cursive;
+  background-color: black;
+  //background-color: #2d3436;
+  //background-image: linear-gradient(315deg, #2d3436 0%, #000000 74%);
+}
+
+#app {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+}
+
+.route-container {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.navport {
+  padding: 0;
+  z-index: 100;
+  height: 127px;
+
+  .header {
+    position: absolute;
+    top: 0;
+    display: flex;
+    z-index: 100;
+  }
+
+  .img-container {
+    margin: 20px 10px;
+    width: 102px;
+    z-index: 51;
+    transition-duration: 0.3s;
+
+    @include media-breakpoint-up('lg') {
+      width: 70%;
+      height: 200px;
+      //margin-top: 75px;
+    }
+  }
+
+  .hamicon {
+    position: absolute;
+    background-color: #ff6363;
+    top: 100%;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+    transition: top .3s;
+
+    &.opened {
+      top: 0;
+    }
+  }
+}
+
+.view {
+  padding-top: 6.4rem;
+  height: 100vh;
+  overflow: hidden;
+  width: 100%;
+
+  @include media-breakpoint-up('lg') {
+    padding-top: 0;
+  }
+}

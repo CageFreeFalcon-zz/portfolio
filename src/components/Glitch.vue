@@ -1,0 +1,89 @@
+<template>
+    <div class="wrapper">
+        <template v-for="content in contents">
+            <h2 class="glitch" :data-text="content" :key="content">{{content}}<br></h2>
+        </template>
+    </div>
+</template>
+
+<script>
+    export default {
+        name: "Glitch",
+        props: {
+            contents: {
+                type: Array,
+                // default: []
+            },
+        },
+    }
+</script>
+
+<style scoped lang="scss">
+    @import url('https://fonts.googleapis.com/css?family=Montserrat:900');
+
+    @mixin glitchCopy {
+        content: attr(data-text);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .wrapper {
+        text-align: left;
+    }
+
+    .glitch {
+        position: relative;
+        color: white;
+        font-size: 3em;
+        /*letter-spacing: .5em;*/
+        animation: glitch-skew 1s infinite linear alternate-reverse;
+        font-family: 'Montserrat', sans-serif;
+
+        &::before {
+            @include glitchCopy;
+            left: 2px;
+            text-shadow: -2px 0 #ff00c1;
+            clip: rect(44px, 450px, 56px, 0);
+            animation: glitch-anim 5s infinite linear alternate-reverse;
+        }
+
+        &::after {
+            @include glitchCopy;
+            left: -2px;
+            text-shadow: -2px 0 #00fff9, 2px 2px #ff00c1;
+            animation: glitch-anim2 1s infinite linear alternate-reverse;
+        }
+    }
+
+    @keyframes glitch-anim {
+        $steps: 20;
+        @for $i from 0 through $steps {
+            #{percentage($i*(1/$steps))} {
+                clip: rect(random(100)+px, 9999px, random(100)+px, 0);
+                transform: skew((random(100) / 100) + deg);
+            }
+        }
+    }
+
+    @keyframes glitch-anim2 {
+        $steps: 20;
+        @for $i from 0 through $steps {
+            #{percentage($i*(1/$steps))} {
+                clip: rect(random(100)+px, 9999px, random(100)+px, 0);
+                transform: skew((random(100) / 100) + deg);
+            }
+        }
+    }
+
+    @keyframes glitch-skew {
+        $steps: 10;
+        @for $i from 0 through $steps {
+            #{percentage($i*(1/$steps))} {
+                transform: skew((random(10) - 5) + deg);
+            }
+        }
+    }
+</style>
