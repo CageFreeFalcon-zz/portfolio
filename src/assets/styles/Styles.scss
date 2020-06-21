@@ -1,24 +1,21 @@
-@import url('https://fonts.googleapis.com/css2?family=Ultra&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Molle:ital@1&family=Yellowtail&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
 //font-family: 'Molle', cursive;          menu
 //font-family: 'Yellowtail', cursive;     loading
 
 @import "~bootstrap";
-@import "~animate.css";
+@import "animations";
 
 body {
   margin: 0;
   padding: 0;
   font-family: 'Molle', cursive;
   background-color: black;
-  //background-color: #2d3436;
-  //background-image: linear-gradient(315deg, #2d3436 0%, #000000 74%);
 }
 
 #app {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
 }
 
@@ -33,6 +30,10 @@ body {
   padding: 0;
   z-index: 100;
   height: 127px;
+
+  @include media-breakpoint-up('lg') {
+    position: fixed;
+  }
 
   .header {
     position: absolute;
@@ -50,7 +51,6 @@ body {
     @include media-breakpoint-up('lg') {
       width: 70%;
       height: 200px;
-      //margin-top: 75px;
     }
   }
 
@@ -71,12 +71,178 @@ body {
 }
 
 .view {
-  padding-top: 6.4rem;
+  padding-top: 7.5rem;
   height: 100vh;
-  overflow: hidden;
+  //overflow-y: scroll;
   width: 100%;
+
+  &::-webkit-scrollbar {
+    width: 0;
+  }
 
   @include media-breakpoint-up('lg') {
     padding-top: 0;
+  }
+}
+
+.home {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 0;
+  padding-left: 20px;
+  font-family: 'Montserrat', sans-serif;
+
+  .btn {
+    width: 50%;
+    max-width: 400px;
+    margin-top: 20px;
+    padding: 10px;
+  }
+
+  p {
+    word-spacing: 10px;
+    color: navajowhite;
+  }
+
+}
+
+.about {
+  font-family: 'Montserrat', sans-serif;
+  color: white;
+
+  @include media-breakpoint-up('lg') {
+    padding-top: 100px;
+  }
+
+  .para {
+    @include media-breakpoint-down('lg') {
+      height: 100vh;
+    }
+  }
+
+  p {
+    text-align: justify;
+
+    &::first-letter {
+      padding-left: 20px;
+    }
+  }
+}
+
+.achivement {
+  @include media-breakpoint-up('lg') {
+    padding-top: 100px;
+  }
+}
+
+.contact {
+  font-family: 'Montserrat', sans-serif;
+
+  @include media-breakpoint-up('lg') {
+    padding-top: 100px;
+  }
+
+  .para p {
+    color: white;
+    text-align: justify;
+
+    &:first-of-type:first-letter {
+      padding-left: 30px;
+    }
+
+    span {
+      color: #656d74;
+    }
+  }
+
+  .social {
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    list-style: none;
+
+    .link {
+      color: white;
+      margin-bottom: 10px;
+      transition: color 0.3s;
+      width: 40%;
+
+      &.facebook:hover {
+        color: #3b5998;
+      }
+
+      &.insta:hover {
+        color: #F46933;
+      }
+
+      &.linkedin:hover {
+        color: #0e76a8;
+      }
+
+      &.git:hover {
+        color: #333;
+      }
+    }
+
+    a {
+      color: inherit;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+
+    svg {
+      width: 2.5rem;
+    }
+  }
+
+  form {
+    @include media-breakpoint-up('lg') {
+      padding-top: 70px;
+    }
+  }
+
+  .fields {
+    width: 100%;
+    /*height: 3rem;*/
+    padding: 0.8rem 0.75rem;
+    font-size: 15px;
+    color: #656d74;
+    background-color: #303030;
+    border: 0;
+  }
+
+  :focus {
+    outline: 0;
+  }
+
+  .form-group {
+    position: relative;
+
+    &::before {
+      content: '';
+      width: 0;
+      height: 2px;
+      background-color: #1ad5bf;
+      position: absolute;
+      top: calc(100% - 2px);
+      z-index: 1000;
+      transition: width 0.3s;
+    }
+
+    &:focus-within::before {
+      width: 100%;
+    }
+
+    &.area::before {
+      top: calc(100% - 9px);
+    }
   }
 }

@@ -1,6 +1,6 @@
 <template>
     <div class="menu d-lg-block" id="menuID">
-        <ul>
+        <ul class="navLinks">
             <li v-for="(link,i) in links" :key="link" :style="'transition-delay:'+i*0.1+'s;animation-delay:'+i*0.1+'s'">
                 <router-link :to="link.link">{{link.name}}</router-link>
                 <span class="menu-num">0{{i+1}}</span>
@@ -27,10 +27,9 @@
                         name: 'Skills',
                         link: '/skills'
                     },
-
                     {
-                        name: 'My Work',
-                        link: '/mywork'
+                        name: 'Achivements',
+                        link: '/achivements'
                     },
                     {
                         name: 'Contact',
@@ -69,7 +68,7 @@
         z-index: 50;
         padding-top: 200px;
         padding-left: 40px;
-        background-image: url("../assets/lines.png");
+        background-image: url("../assets/images/lines.png");
         background-size: cover;
         visibility: hidden;
 
@@ -83,48 +82,12 @@
             li {
                 left: 0;
                 opacity: 1;
+                bottom: 0;
             }
         }
 
         @include media-breakpoint-up('lg') {
             padding-top: 231px;
-        }
-    }
-
-    a {
-        color: #ffffff;
-        font-size: 42px;
-        text-decoration: none;
-        transition: color 0.3s;
-
-        &.router-link-exact-active {
-            color: #ff6363;
-
-            &:after {
-                width: 110%;
-            }
-        }
-
-        &:hover {
-            color: #ff6363;
-            text-decoration: none;
-
-            &:after {
-                width: 110%;
-            }
-        }
-
-        &:after {
-            content: '';
-            display: block;
-            width: 0;
-            height: 15px;
-            background-color: #333;
-            transition: width .3s;
-            position: absolute;
-            left: -5%;
-            bottom: 8px;
-            z-index: -1;
         }
     }
 
@@ -136,7 +99,7 @@
     }
 
 
-    li {
+    .navLinks li {
         display: table;
         line-height: normal;
         position: relative;
@@ -150,7 +113,45 @@
             animation-duration: 300ms;
             animation-fill-mode: forwards;
         }
+
+        a {
+            color: #ffffff;
+            font-size: 42px;
+            text-decoration: none;
+            transition: color 0.3s;
+
+            &.router-link-exact-active {
+                color: #ff6363;
+
+                &:after {
+                    width: 110%;
+                }
+            }
+
+            &:hover {
+                color: #ff6363;
+                text-decoration: none;
+
+                &:after {
+                    width: 110%;
+                }
+            }
+
+            &:after {
+                content: '';
+                display: block;
+                width: 0;
+                height: 15px;
+                background-color: #333;
+                transition: width .3s;
+                position: absolute;
+                left: -5%;
+                bottom: 8px;
+                z-index: -1;
+            }
+        }
     }
+
 
     @keyframes links {
         to {
